@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Create Customer</title>
+</head>
+<body>
+<h3 th:text="#{create.heading}"></h3>
+<a href="?lang=en" id = "l">English</a> | <a href="?lang=vi">Viet Nam</a>
+<p>
+    <a th:href="@{/customers}" th:text="#{create.back}">
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customers/save}" th:object="${customers}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="name" th:text="#{create.name}"></label>
+            <input type="text" id="name" th:field="*{name}"/>
+        </div>
+        <div>
+            <label for="age" th:text="#{create.age}"></label>
+            <input type="text" id="age" th:field="*{age}"/>
+        </div>
+        <div>
+            <label for="phoneNumber" th:text="#{create.phonenumber}"></label>
+            <input type="text" id="phoneNumber" th:field="*{phoneNumber}"/>
+        </div>
+        <button th:text="#{create.button}"></button>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

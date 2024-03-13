@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>List Customer</title>
+</head>
+<body>
+<h3 th:text="#{list.heading}"></h3>
+<a href="?lang=en" id = "l">English</a> | <a href="?lang=vi">Viet Nam</a>
+<p>
+    <a th:href="@{/customers/create}" th:text="#{list.add}">
+        </a>
+</p>
+
+
+<table id = "customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th th:text="#{list.name}"></th>
+        <th th:text="#{list.age}"></th>
+        <th th:text="#{list.phonenumber}"></th>
+        <th th:text="#{list.edit}"></th>
+        <th th:text="#{list.delete}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c,cStatus : ${customers}">
+        <td th:text="${cStatus.count}"></td>
+        <td th:text="${c.getName()}"></td>
+        <td th:text="${c.getAge()}"></td>
+        <td th:text="${c.getPhoneNumber()}"></td>
+        <td><a th:href="@{/customers/edit/{id}(id=${c.getId()})}" th:text="#{list.edit}"></a></td>
+        <td><a th:href="@{/customers/delete/{id}(id=${c.getId()})}" th:text="#{list.delete}"></a></td>
+    </tr>
+    </tbody>
+</table>
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

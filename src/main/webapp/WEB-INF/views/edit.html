@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="#{edit.heading}"></h1>
+<a href="?lang=en" id = "l">English</a> | <a href="?lang=vi">Viet Nam</a>
+<form action="#" th:action="@{/customers/edit}" th:object="${customers}"
+      method="POST">
+    <table>
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="name" th:text="#{edit.name}"></label>
+            <input type="text" id="name" th:field="*{name}"/>
+        </div>
+        <div>
+            <label for="age" th:text="#{edit.age}"></label>
+            <input type="text" id="age" th:field="*{age}"/>
+        </div>
+        <div>
+            <label for="phoneNumber" th:text="#{edit.phonenumber}"></label>
+            <input type="text" id="phoneNumber" th:field="*{phoneNumber}"/>
+        </div>
+    </table>
+    <button type="submit" th:text="#{edit.button}"></button>
+</form>
+</body>
+</html>
